@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ftp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ftp
+  template:
+    metadata:
+      labels:
+        app: ftp
+    spec:
+      containers:
+      - name: ftp-container
+        image: your-docker-image-repo/ftp-container:latest
+        ports:
+        - containerPort: 21
+        - containerPort: 21000
+        - containerPort: 21010
+        volumeMounts:
+        - name: ftp-storage
+          mountPath: /home/admin/ftp
+      volumes:
+      - name: ftp-storage
+        emptyDir: {}
+
