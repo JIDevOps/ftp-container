@@ -25,7 +25,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Expose FTP ports
-EXPOSE 21 21000-21010
+EXPOSE 21 21000-21010 2121
 
 # Set the entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
